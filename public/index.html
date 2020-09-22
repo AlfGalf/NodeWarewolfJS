@@ -1,13 +1,20 @@
 <html>
 
 <head>
-  <title>Express</title>
+  <title>Werewolves!</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="javascripts/game.js"></script>
+
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+  <h1>Werewolf</h1>
+  <input type="button" onclick="makeGame()" value="New Game"/><br>
+  <label for="game_code">Game Code</label>
+  <input type="text" id="game_code" name="Game code"><br>
+  <input type="button" onclick="joinGame()" value="Join game"/>
 </body>
 
 </html>

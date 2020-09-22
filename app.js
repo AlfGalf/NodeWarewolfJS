@@ -1,3 +1,5 @@
+
+var game = require('./game');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -16,5 +18,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.post('/makeGame', (req, res) => {
+    var code = game.makeNewGame()
+    console.log(code);
+    res.send(code.toString());
+})
+
+app.post('/joinGame', (req, res) => {
+    uuid = game.addToGame(req.body.code);
+    console.log(req.body.code);
+    res.send(code.toString());
+})
 
 module.exports = app;
