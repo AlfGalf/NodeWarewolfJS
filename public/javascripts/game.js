@@ -124,7 +124,7 @@ function updateRoles(num) {
         for (let i = 0; i < 7; i++) {
             var num_of_role = rolesArr[i];
             if(num_of_role === 0) {
-                //$('#role' + i).hide();
+                $('#role' + i).hide();
             } else {
                 $('#role' + i).show()
                 $('#role' + i.toString() + 'num').text(num_of_role);
@@ -133,7 +133,7 @@ function updateRoles(num) {
         }
     } else {
         for (let i = 0; i < 7; i++) {
-            //$('#role' + i).hide();
+            $('#role' + i).hide();
         }
         console.log("Removed all");
     }
