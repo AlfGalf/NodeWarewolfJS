@@ -7,28 +7,32 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="javascripts/game.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Exo 2' rel='stylesheet'>
 
 </head>
 
 <body>
-<h1>Werewolf</h1>
+    <h1 class="bigtitle">Werewolf</h1>
 <div id="connect_div">
-    <h1 id="error"/>
-    <input type="button" onclick="makeGame()" value="New Game"/><br>
-    <label for="game_code">Game Code</label>
-    <input type="text" id="game_code" name="Game code"><br>
-    <input type="button" onclick="joinGame()" value="Join game"/>
+    
+    <h1 class="subtitle" id="error"/>
+    
+    <!-- <label for="game_code">Game Code</label> -->
+    <input type="text" id="game_code" name="Game code" maxlength='4' spellcheck="false"><br><br>
+    <button class="btn draw-border" onclick="joinGame()">Join Game</button><br><br>
+    <button class="btn draw-border" onclick="makeGame()">Host Game</button>
 </div>
 <div id="player_div">
-    <h1 id="role">Wolf</h1>
+    <h1 class="subtitle">You have been assigned</h1>
+    <h1 class="title" id="role">Wolf</h1>
 </div>
 <div id="host_div">
-    <h1>Room Code: </h1>
-    <h1 id="room_code">0000</h1>
-    <h1>Number of participants</h1>
-    <h1 id="num_participants">0</h1>
-    <input onclick="startGame()" type="button" value="Assign Roles" id="start_game_button"/>
-    <h1 id="has_game_started"/>
+    <h1 class="title">Room Code: </h1>
+    <h1 class="title" id="room_code">0000</h1>
+    <h1 class="subtitle">Number of participants</h1>
+    <h1 class="subtitle" id="num_participants">0</h1>
+    <button class="btn draw-border" onclick="startGame()" value="" id="start_game_button">Assign Roles</button>
+    <h1 id="has_game_started" class="title"/>
 </div>
 </body>
 
