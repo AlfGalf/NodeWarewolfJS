@@ -33,7 +33,7 @@ class Player {
 }
 
 function addGame(code, socket) {
-    console.log("Added game lobby: " + game.numCode);
+    console.log("Added game lobby: " + code);
     var game = new Game(code, socket);
     games.push(game);
 
