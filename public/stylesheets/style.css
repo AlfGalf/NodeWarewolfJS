@@ -9,6 +9,11 @@ h1 {
   background-color: #F3F5F6;
 }
 
+h2 {
+  font-family: 'Exo 2';
+  background-color: #F3F5F6;
+}
+
 .bigtitle {
   font-weight: bold;
   font-size: 65px;

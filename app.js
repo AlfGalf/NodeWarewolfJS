@@ -6,13 +6,25 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var uuid = require('uuid').v4;
 
+var http = require('http');
+var https = require('https');
+
 const roomsBeingSetup = [];
 const sockets = [];
 
 var app = express();
 
-var server = app.listen(3000, () => {
-    console.log('listening');
+http.createServer((req, res) => {
+    res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
+    res.end();
+})
+
+https.createServer({
+    key: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/privkey.pem"),
+    cert: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/fullchain.pem"),
+    ca: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/chain.pem")
+}, app).listen(443, () => {
+    console.log('HTTPS listening');
 });
 
 var io = require('socket.io')(server);

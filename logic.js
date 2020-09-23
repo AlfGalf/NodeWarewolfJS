@@ -52,7 +52,7 @@ function assign(players) {
     var output = [];
 
     for (i = 0; i < players.length; i++) {
-        output.push({'uuid': players[i], 'role': randtable[i]});
+        output.push({uuid: players[i], role: randtable[i]});
     }
 
     return output;
