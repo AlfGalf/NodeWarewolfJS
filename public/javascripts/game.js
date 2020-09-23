@@ -94,8 +94,14 @@ function joinGame() {
 
             socket.on("assign_role", (res) => {
                 console.log(res);
-                $('#role').text(res.role)
-                    .show();
+                if (res.rolenum != 0) {
+                    $('#role').text(res.role + " " + res.rolenum)
+                        .show();
+                } else {
+                    $('#role').text(res.role)
+                        .show();
+                }
+                
                 $('#desc').text(res.description)
                     .show();
                 $('#wait_label').hide();

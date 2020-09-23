@@ -62,6 +62,9 @@ function addGame(code, socket) {
 
             var roleAssignment = logic.assign(playerUuidList);
 
+            var medics = 0;
+            var detectives = 0;
+
             for (let i = 0; i < game.players.length; i++) {
 
                 var role;
@@ -72,9 +75,21 @@ function addGame(code, socket) {
                     }
                 })
 
+                var num = 0;
+
+                if (role == 2) {
+                    medics++;
+                    num = medics;
+                }
+                if (role == 3) {
+                    detectives++;
+                    num = detectives;
+                }
+
                 game.players[i].socket.emit("assign_role", {
                     role: roleList[role].name,
-                    description: roleList[role].desc
+                    description: roleList[role].desc,
+                    rolenum: num
                 })
             }
             game.hasGivenRoles = true;
