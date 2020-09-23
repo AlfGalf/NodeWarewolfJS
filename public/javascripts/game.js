@@ -2,6 +2,37 @@
 var uuid = "";
 var socket;
 var room_code;
+var num_players = 0;
+
+var roles = [];
+roles.push([1, 4, 0, 1, 0, 0, 0]); // 6 players
+roles.push([1, 5, 0, 1, 0, 0, 0]); // 7 players
+roles.push([2, 4, 1, 1, 0, 0, 0]); // 8 players
+roles.push([2, 5, 1, 1, 0, 0, 0]); // 9 players
+roles.push([2, 6, 1, 1, 0, 0, 0]); // 10 players
+roles.push([2, 7, 1, 1, 0, 0, 0]); // 11 players
+roles.push([3, 6, 1, 2, 0, 0, 0]); // 12 players
+roles.push([3, 7, 1, 2, 0, 0, 0]); // 13 players
+roles.push([3, 8, 1, 2, 0, 0, 0]); // 14 players
+roles.push([3, 9, 1, 2, 0, 0, 0]); // 15 players
+roles.push([4, 8, 2, 2, 0, 0, 0]); // 16 players
+roles.push([4, 9, 2, 2, 0, 0, 0]); // 17 players
+roles.push([4, 9, 2, 2, 0, 0, 1]); // 18 players
+roles.push([4, 10, 2, 2, 0, 0, 1]); // 19 players
+roles.push([5, 9, 2, 2, 0, 1, 1]); // 20 players
+roles.push([5, 10, 2, 2, 0, 1, 1]); // 21 players
+roles.push([5, 10, 2, 2, 1, 1, 1]); // 22 players
+roles.push([5, 11, 2, 2, 1, 1, 1]); // 23 players
+roles.push([6, 11, 2, 2, 1, 1, 1]); // 24 players
+roles.push([0, 0, 0, 0, 0, 0, 0]); // 25 players
+roles.push([0, 0, 0, 0, 0, 0, 0]); // 26 players
+roles.push([0, 0, 0, 0, 0, 0, 0]); // 27 players
+roles.push([0, 0, 0, 0, 0, 0, 0]); // 28 players
+roles.push([0, 0, 0, 0, 0, 0, 0]); // 29 players
+roles.push([0, 0, 0, 0, 0, 0, 0]); // 30 players
+
+const min_players = 6;
+const max_players = 24;
 
 $(document).ready(() => {
     $('#connect_div').show();
@@ -23,6 +54,7 @@ function makeGame() {
 
         socket.on('player_number_update', (res) => {
             $('#num_participants').text("Number of participants: " + res.num.toString());
+            num_players = res.num;
             if(res.start_possible) {
                 $('#num_participants_error').hide();
             } else {
@@ -81,6 +113,25 @@ function joinGame() {
         }
     });
 
+}
+
+function updateRoles(num) {
+    if(num_players >= min_players || num_players <= max_players) {
+        var rolesArr = roles[num];
+        for (let i = 0; i < 7; i++) {
+            var num_of_role = rolesArr[i];
+            if(num_of_role === 0) {
+                $('#role' + i).hide();
+            } else {
+                $('#role' + i).show()
+            }
+
+        }
+    } else {
+        for (let i = 0; i < 7; i++) {
+            $('#role' + i).hide();
+        }
+    }
 }
 
 function startGame() {

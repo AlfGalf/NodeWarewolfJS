@@ -13,7 +13,7 @@ const roleList =
         {name: 'Mayor', desc: 'You are the Mayor. During a Day phase, you may show this screen to prove that you are the Mayor. When you do this, your vote counts for three votes for the rest of the game, however you can no longer be protected by doctors. Your job is to find out who the Mafia are, and vote to kill them during the Day phase.'},
         {name: 'Serial Killer', desc: 'You are the Serial Killer. During the Night phase, you may choose one person to kill. Your job is to be the last person alive at the end of the game. You may not show this screen at any point during the game.'},
         {name: 'Jester', desc: 'You are the Jester. Your job is to confuse the game, and to be killed by a vote during the Day phase. If you do, you may kill any one person during the next night phase. You may not show this screen at any point during the game.'}
-    ]
+    ];
 
 class Game {
     constructor(code, socket) {
