@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var uuid = require('uuid').v4;
+var fs = require('fs');
 
 var http = require('http');
 var https = require('https');
