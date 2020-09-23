@@ -52,9 +52,12 @@ function makeGame() {
             room_code: room_code
         });
 
+        updateRoles(0);
+
         socket.on('player_number_update', (res) => {
             $('#num_participants').text("Number of participants: " + res.num.toString());
             num_players = res.num;
+            updateRoles(res.num);
             if(res.start_possible) {
                 $('#num_participants_error').hide();
             } else {
