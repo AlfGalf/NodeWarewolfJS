@@ -52,7 +52,7 @@ a {
 
 body div {
   text-align: center;
-  visibility: hidden;
+  display: none;
 }
 
 .draw-border {
