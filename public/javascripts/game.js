@@ -119,7 +119,7 @@ function joinGame() {
 }
 
 function updateRoles(num) {
-    if(num_players >= min_players || num_players <= max_players) {
+    if(num_players >= min_players && num_players <= max_players) {
         var rolesArr = roles[num - 6];
         for (let i = 0; i < 7; i++) {
             var num_of_role = rolesArr[i];
