@@ -124,6 +124,7 @@ function updateRoles(num) {
                 $('#role' + i).hide();
             } else {
                 $('#role' + i).show()
+                $('#role' + num + 'num').text(num);
             }
 
         }
