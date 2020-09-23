@@ -63,7 +63,7 @@ function makeGame() {
             } else {
                 $('#num_participants_error').show().text("Not a valid number of players");
             }
-            $('#start_game_button').prop('disabled', res.start_possible);
+            $('#start_game_button').prop('disabled', !res.start_possible);
         });
 
         socket.on('disconnect', () => {
