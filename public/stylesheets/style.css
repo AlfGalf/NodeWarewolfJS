@@ -19,8 +19,16 @@ h2 {
   margin: auto;
 }
 
-#room_code {
-  display: inline;
+.roles_preview {
+ width: 1000px;
+ text-align:center
+}
+
+.role {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    vertical-align: middle;
 }
 
 .bigtitle {
