@@ -26,7 +26,7 @@ function makeGame() {
         });
 
         socket.on('disconnect', () => {
-            $('#error').text("Server disconnected!");
+            $('#error').text("Server disconnected!").show();
             console.log("Server disconected!")
         });
     });
@@ -66,7 +66,7 @@ function joinGame() {
             })
 
         } else {
-            $('#error').text("Unable to find room");
+            $('#error').text("Unable to find room").show();
         }
     });
 
