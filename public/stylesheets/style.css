@@ -54,7 +54,7 @@ body div {
   text-align: center;
 }
 
-button:enabled.draw-border {
+.draw-border {
   box-shadow: inset 0 0 0 4px #2C3E50;
   color: #2C3E50;
   transition: color 0.25s 0.0833333333s;
