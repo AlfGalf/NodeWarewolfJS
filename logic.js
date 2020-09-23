@@ -42,6 +42,10 @@ roles.push([0, 0, 0, 0, 0, 0, 0]); // 30 players
 function assign(players) {
     var randtable = [];
 
+    if(players.length < min_players || players.length > max_players) {
+        return [0, 0, 0, 0, 0, 0, 0];
+    }
+
     for (i = 0; i < roles[0].length; i++) {
         for (j = 0; j < roles[players.length-6][i]; j++) {
             randtable.push(i);
