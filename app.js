@@ -58,7 +58,7 @@ app.post('/makeGame', (req, res) => {
         code: code
     })
 
-    res.send(code.toString());
+    res.send(String(code).padStart(4, '0'));
 })
 
 app.post('/joinGame', (req, res) => {
