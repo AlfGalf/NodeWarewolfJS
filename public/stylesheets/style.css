@@ -54,13 +54,13 @@ body div {
   text-align: center;
 }
 
-.draw-border {
+button:enabled.draw-border {
   box-shadow: inset 0 0 0 4px #2C3E50;
   color: #2C3E50;
   transition: color 0.25s 0.0833333333s;
   position: relative;
 }
-.draw-border::before, .draw-border::after {
+button:enabled.draw-border::before, button:enabled.draw-border::after {
   border: 0 solid transparent;
   box-sizing: border-box;
   content: "";
@@ -71,27 +71,27 @@ body div {
   bottom: 0;
   right: 0;
 }
-.draw-border::before {
+button:enabled.draw-border::before {
   border-bottom-width: 4px;
   border-left-width: 4px;
 }
-.draw-border::after {
+button:enabled.draw-border::after {
   border-top-width: 4px;
   border-right-width: 4px;
 }
-.draw-border:hover {
+button:enabled.draw-border:hover {
   color: #2DCC6F;
 }
-.draw-border:hover::before, .draw-border:hover::after {
+button:enabled.draw-border:hover::before, button:enabled.draw-border:hover::after {
   border-color: #3597DA;
   transition: border-color 0s, width 0.15s, height 0.15s;
   width: 100%;
   height: 100%;
 }
-.draw-border:hover::before {
+button:enabled.draw-border:hover::before {
   transition-delay: 0s, 0s, 0.15s;
 }
-.draw-border:hover::after {
+button:enabled.draw-border:hover::after {
   transition-delay: 0s, 0.15s, 0s;
 }
 
