@@ -42,7 +42,7 @@ roles.push([0, 0, 0, 0, 0, 0, 0]); // 30 players
 function assign(players) {
     var randtable = [];
 
-    if(players.length < min_players || players.length > max_players) {
+    if(players.length < minplayers || players.length > maxplayers) {
         return [0, 0, 0, 0, 0, 0, 0];
     }
 
@@ -71,6 +71,8 @@ function shuffleArray(array) {
     }
 }
 
+const minplayers = 6;
+const maxplayers = 24;
 module.exports.assign = assign;
-module.exports.maxplayers = 24;
-module.exports.minplayers = 6;
+module.exports.maxplayers = maxplayers;
+module.exports.minplayers = minplayers;
