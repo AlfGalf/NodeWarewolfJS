@@ -63,17 +63,18 @@ function joinGame() {
                 $('#error').text("Host disconnected. Please reload the page.")
                     .show();
                 $('#wait_label').hide();
-            })
+            });
+
+            socket.on('disconnect', () => {
+                $('#error').text("Server disconnected!");
+                console.log("Server disconnected");
+            });
 
         } else {
             $('#error').text("Unable to find room").show();
         }
     });
 
-    socket.on('disconnect', () => {
-        $('#error').text("Server disconnected!");
-        console.log("Server disconnected");
-    });
 }
 
 function startGame() {
