@@ -33,11 +33,13 @@ class Player {
 }
 
 function addGame(code, socket) {
+    console.log("Added game lobby: " + game.numCode);
     var game = new Game(code, socket);
     games.push(game);
 
     socket.on('disconnect', () => {
         if(!game.hasGivenRoles) {
+            console.log("Host disconnected before game started, Game: " + game.numCode);
             for (let i = 0; i < game.players.length; i++) {
                 let player = game.players[i];
                 player.socket.emit("host_disconnect");
@@ -48,11 +50,10 @@ function addGame(code, socket) {
     })
 
     socket.on("start_game", () => {
-        // TODO: Assign correct roles
         if(game.hasGivenRoles) {
             console.error("Attempted to give roles when already given.")
         } else {
-
+            console.log("Game: " + game.numCode + " starting");
             var playerUuidList = []
 
             game.players.forEach(player => {
@@ -77,6 +78,7 @@ function addGame(code, socket) {
                 })
             }
             game.hasGivenRoles = true;
+            console.log("Game: " + game.numCode + " started.");
         }
     });
 }
@@ -99,17 +101,20 @@ function addPlayerToGame(gameCode, uuid, socket) {
             game.socket.emit('player_number_update', {
                 num: game.players.length
             });
+
             socket.on('disconnect', () => {
+                console.log("Player socket closed for game: " + game.numCode);
                 for (let j = 0; j < game.players.length; j++) {
-                    if(game.players[i].uuid === uuid) {
-                        game.players.pop(game.players[i]);
+                    if(game.players[j].uuid === uuid) {
+                        console.log("Player disconnected from game: " + game.numCode);
+                        game.players.pop(game.players[j]);
                         game.socket.emit('player_number_update', {
                             num: game.players.length
                         });
                     }
                 }
             });
-
+            console.log("Added player:  to game: " + game.numCode);
             return uuid;
         }
     }
