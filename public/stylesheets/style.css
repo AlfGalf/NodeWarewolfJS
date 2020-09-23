@@ -52,6 +52,7 @@ a {
 
 body div {
   text-align: center;
+  visibility: hidden;
 }
 
 .draw-border {
@@ -110,7 +111,7 @@ button:enabled.draw-border:hover::after {
 
 :disabled.btn {
   color: gray;
-  border-color: gray;
+  box-shadow: gray;
 }
 
 .btn:focus {
