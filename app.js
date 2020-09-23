@@ -16,9 +16,10 @@ const sockets = [];
 var app = express();
 
 http.createServer((req, res) => {
-    console.log("http redirect listening")
     res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
     res.end();
+}).listen(80, () => {
+    console.log("Http redirect listening");
 })
 
 var server = https.createServer({
