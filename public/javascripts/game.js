@@ -20,6 +20,10 @@ function makeGame() {
         socket.emit('host_sign_up', {
             room_code: room_code
         });
+
+        socket.on('player_number_update', (res) => {
+            $('#num_participants').text(res.num);
+        });
     })
 }
 
@@ -41,8 +45,11 @@ function joinGame() {
         } else {
             $('#error').text("Unable to find room");
         }
-
     });
 }
 
-document.re
+function startGame() {
+    socket.emit("start_game");
+    $('#start_game_button').hide();
+    $('#has_game_started').text("Game Started");
+}

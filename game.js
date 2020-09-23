@@ -7,6 +7,7 @@ class Game {
         this.players = [];
         this.numCode = code;
         this.socket = socket;
+        this.hasGivenRoles = false;
     }
 }
 
@@ -28,6 +29,11 @@ function addGame(code, socket) {
         }
         games.pop(game);
     })
+
+    socket.on("start_game", () => {
+        // TODO: START GAME
+
+    });
 }
 
 function doesGameExist(code) {
@@ -47,12 +53,16 @@ function addPlayerToGame(gameCode, uuid, socket) {
         console.log(gameCode);
         if(game.numCode === gameCode) {
             game.players.push(new Player(uuid, socket));
-            game.socket.emit('playerNumberUpdate', game.players.length);
+            game.socket.emit('player_number_update', {
+                num: game.players.length
+            });
             socket.on('disconnect', () => {
                 for (let j = 0; j < game.players.length; j++) {
-                    if(game.players[i].uuid == uuid) {
+                    if(game.players[i].uuid === uuid) {
                         game.players.pop(game.players[i]);
-                        game.socket.emit('playerNumberUpdate', game.players.length);
+                        game.socket.emit('player_number_update', {
+                            num: game.players.length
+                        });
                     }
                 }
             });
