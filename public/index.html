@@ -23,8 +23,12 @@
     <button class="btn draw-border" onclick="makeGame()">Host Game</button>
 </div>
 <div id="player_div">
-    <h1 class="subtitle">You have been assigned</h1>
-    <h1 class="title" id="role">Wolf</h1>
+    <div id="wait_label">
+        <h1>Please wait for the game to start.</h1>
+        <h2>When your role is revealed keep it secret.</h2>
+    </div>
+    <h1 id="role">Role</h1>
+    <h2 id="desc">Desc</h2>
 </div>
 <div id="host_div">
     <h1 class="title">Room Code: </h1>

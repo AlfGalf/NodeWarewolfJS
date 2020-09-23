@@ -15,30 +15,44 @@ class Player {
     constructor(uuid, socket) {
         this.uuid = uuid;
         this.socket = socket;
+        this.role = 0;
     }
 }
 
 function addGame(code, socket) {
     var game = new Game(code, socket);
     games.push(game);
+
     socket.on('disconnect', () => {
-        for (let i = 0; i < game.players.length; i++) {
-            let player = game.players[i];
-            player.socket.emit("hostDisconnect");
-            player.socket.disconnect();
+        if(!game.hasGivenRoles) {
+            for (let i = 0; i < game.players.length; i++) {
+                let player = game.players[i];
+                player.socket.emit("host_disconnect");
+                player.socket.disconnect();
+            }
+            games.pop(game);
         }
-        games.pop(game);
     })
 
     socket.on("start_game", () => {
-        // TODO: START GAME
-
+        // TODO: Assign correct roles
+        if(game.hasGivenRoles) {
+            console.error("Attempted to give roles when already given.")
+        } else {
+            for (let i = 0; i < game.players.length; i++) {
+                game.players[i].socket.emit("assign_role", {
+                    role: "Test",
+                    description: "Test test test test"
+                })
+            }
+            game.hasGivenRoles = true;
+        }
     });
 }
 
 function doesGameExist(code) {
     for (let i = 0; i < games.length; i++) {
-        if(games[i].numCode === code) {
+        if(games[i].numCode === code && games[i].hasGivenRoles === false) {
             return true;
         }
     }
@@ -49,9 +63,7 @@ function addPlayerToGame(gameCode, uuid, socket) {
     for (var i =0; i < games.length; i++)
     {
         var game = games[i];
-        console.log(game.numCode);
-        console.log(gameCode);
-        if(game.numCode === gameCode) {
+        if(game.numCode === gameCode && game.hasGivenRoles === false) {
             game.players.push(new Player(uuid, socket));
             game.socket.emit('player_number_update', {
                 num: game.players.length
