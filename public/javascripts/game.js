@@ -22,7 +22,7 @@ function makeGame() {
         });
 
         socket.on('player_number_update', (res) => {
-            $('#num_participants').text(res.num.toString() + res.start_possible ?? " \n(not a valid number of players)", "");
+            $('#num_participants').text(res.num.toString() + res.start_possible ? " \n(not a valid number of players)" : "");
             $('#start_game_button').prop('disabled', res.start_possible);
         });
 
