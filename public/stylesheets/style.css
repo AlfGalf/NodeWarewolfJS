@@ -110,6 +110,7 @@ button:enabled.draw-border:hover::after {
 
 :disabled.btn {
   color: gray;
+  border-color: gray;
 }
 
 .btn:focus {
