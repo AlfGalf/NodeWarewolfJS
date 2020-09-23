@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy NodeJS app
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            mv /WarewolfServer/current /WarewolfServer/old/build-`date +%y.%m.%d-%H:%M:%S`
+            cd /WarewolfServer/current # navigate into the folder
+            git clone https://github.com/AlfGalf/NodeWarewolfJS # clone the repo into the 'app' folder
+            cd NodeWarewolfJS # navigate into the repo
+            npm install # install dependencies 
+            sudo systemctl restart WarewolfWebServer # start as a background service.
