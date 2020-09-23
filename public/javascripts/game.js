@@ -58,6 +58,7 @@ function makeGame() {
             $('#num_participants').text("Number of participants: " + res.num.toString());
             num_players = res.num;
             updateRoles(res.num);
+            console.log(res);
             if(res.start_possible) {
                 $('#num_participants_error').hide();
             } else {
