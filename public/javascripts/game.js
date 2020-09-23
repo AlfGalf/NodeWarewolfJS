@@ -24,7 +24,11 @@ function makeGame() {
         socket.on('player_number_update', (res) => {
             $('#num_participants').text(res.num);
         });
-    })
+
+        socket.on('disconnect', () => {
+            $('#error').text("Server disconnected!")
+        });
+    });
 }
 
 function joinGame() {
@@ -63,6 +67,10 @@ function joinGame() {
         } else {
             $('#error').text("Unable to find room");
         }
+    });
+
+    socket.on('disconnect', () => {
+        $('#error').text("Server disconnected!")
     });
 }
 
