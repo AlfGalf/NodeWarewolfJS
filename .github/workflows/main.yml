@@ -27,4 +27,4 @@ jobs:
             git clone https://github.com/AlfGalf/NodeWarewolfJS # clone the repo into the 'app' folder
             cd NodeWarewolfJS # navigate into the repo
             npm install # install dependencies 
-            sudo systemctl restart WarewolfWebServer # start as a background service.
+            sudo systemctl restart warewolfWebServer # start as a background service.
