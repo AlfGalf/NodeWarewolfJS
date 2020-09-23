@@ -26,7 +26,8 @@ function makeGame() {
         });
 
         socket.on('disconnect', () => {
-            $('#error').text("Server disconnected!")
+            $('#error').text("Server disconnected!");
+            console.log("Server disconected!")
         });
     });
 }
@@ -70,7 +71,8 @@ function joinGame() {
     });
 
     socket.on('disconnect', () => {
-        $('#error').text("Server disconnected!")
+        $('#error').text("Server disconnected!");
+        console.log("Server disconnected");
     });
 }
 
