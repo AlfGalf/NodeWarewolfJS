@@ -23,6 +23,7 @@ function makeGame() {
 
         socket.on('player_number_update', (res) => {
             $('#num_participants').text(res.num);
+            $('#start_game_button').prop('disabled', res.start_possible);
         });
 
         socket.on('disconnect', () => {

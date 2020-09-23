@@ -95,7 +95,7 @@ function doesGameExist(code) {
 function addPlayerToGame(gameCode, uuid, socket) {
     for (var i =0; i < games.length; i++)
     {
-        var game = games[i];
+        const game = games[i];
         if(game.numCode === gameCode && game.hasGivenRoles === false) {
             game.players.push(new Player(uuid, socket));
             game.socket.emit('player_number_update', {
@@ -109,7 +109,8 @@ function addPlayerToGame(gameCode, uuid, socket) {
                         console.log("Player disconnected from game: " + game.numCode);
                         game.players.pop(game.players[j]);
                         game.socket.emit('player_number_update', {
-                            num: game.players.length
+                            num: game.players.length,
+                            start_possible: game.players.length >= logic.minplayers && game.players.length <= logic.maxplayers
                         });
                     }
                 }
