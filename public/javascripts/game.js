@@ -36,12 +36,30 @@ function joinGame() {
             room_code = response.data.room_code;
             $('#connect_div').hide();
             $('#player_div').show();
+            $('#role').hide();
+            $('#desc').hide();
 
             socket = io.connect();
             socket.emit('player_sign_up', {
                 uuid: uuid,
                 room_code: room_code
             });
+
+            socket.on("assign_role", (res) => {
+                console.log(res);
+                $('#role').text(res.role)
+                    .show();
+                $('#desc').text(res.description)
+                    .show();
+                $('#wait_label').hide();
+            });
+
+            socket.on("host_disconnect", () => {
+                $('#error').text("Host disconnected. Please reload the page.")
+                    .show();
+                $('#wait_label').hide();
+            })
+
         } else {
             $('#error').text("Unable to find room");
         }

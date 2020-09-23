@@ -26,10 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', (socket) => {
     console.log('a user connected');
 
-    socket.on('disconnect', (socket) => {
-        console.log('a player disconnected');
-    })
-
     socket.on('host_sign_up', (res) => {
         let code = res.room_code;
         for (let i = 0; i < roomsBeingSetup.length; i++) {
