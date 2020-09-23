@@ -32,7 +32,7 @@ h2 {
     vertical-align: middle;
 }
 
-div.role h1 {
+div.role h1, div.role p {
   display: inline;
 }
 
