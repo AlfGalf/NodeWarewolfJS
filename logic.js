@@ -68,3 +68,5 @@ function shuffleArray(array) {
 }
 
 module.exports.assign = assign;
+module.exports.maxplayers = 24;
+module.exports.minplayers = 6;
