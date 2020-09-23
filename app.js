@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
             let room = roomsBeingSetup[i];
             if(room.code === code) {
                 game.addGame(code, socket);
-                console.log("Made Game");
+                console.log("Game lobby started after host socket connection: " + code);
                 return;
             }
         }
@@ -65,6 +65,7 @@ app.get('/', function(req, res) {
 
 app.post('/makeGame', (req, res) => {
     var code = Math.floor(Math.random() * 10000);
+    console.log("Game initiated: " + code);
     roomsBeingSetup.push( {
         code: code
     })
@@ -73,7 +74,7 @@ app.post('/makeGame', (req, res) => {
 })
 
 app.post('/joinGame', (req, res) => {
-
+    console.log("Game join request: " + req.body.code);
     if(game.doesGameExist(req.body.code)) {
         res.send( {
             success: true,
@@ -81,6 +82,7 @@ app.post('/joinGame', (req, res) => {
             room_code: req.body.code
         })
     } else {
+        console.log("Bad join request: " + req.body.code)
         res.send( {
             success: false
         })

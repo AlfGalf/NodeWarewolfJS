@@ -13,10 +13,8 @@
 
 <body>
     <h1 class="bigtitle">Mafia</h1>
-<div id="connect_div">
-    
     <h1 class="subtitle" id="error"/>
-    
+<div id="connect_div">
     <!-- <label for="game_code">Game Code</label> -->
     <input type="text" id="game_code" name="Game code" maxlength='4' spellcheck="false"><br><br>
     <button class="btn draw-border" onclick="joinGame()" disabled>Joinn Game</button><br><br>
@@ -35,7 +33,7 @@
     <h1 class="title" id="room_code">0000</h1>
     <h1 class="subtitle">Number of participants</h1>
     <h1 class="subtitle" id="num_participants">0</h1>
-    <button class="btn draw-border" onclick="startGame()" value="" id="start_game_button">Assign Roles</button>
+    <button class="btn draw-border" onclick="startGame()" value="" id="start_game_button" disabled="true">Assign Roles</button>
     <h1 class="title" id="has_game_started" class="title"/>
 </div>
 </body>

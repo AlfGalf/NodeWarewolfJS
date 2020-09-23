@@ -23,8 +23,14 @@ function makeGame() {
 
         socket.on('player_number_update', (res) => {
             $('#num_participants').text(res.num);
+            $('#start_game_button').prop('disabled', res.start_possible);
         });
-    })
+
+        socket.on('disconnect', () => {
+            $('#error').text("Server disconnected!").show();
+            console.log("Server disconected!")
+        });
+    });
 }
 
 function joinGame() {
@@ -58,12 +64,18 @@ function joinGame() {
                 $('#error').text("Host disconnected. Please reload the page.")
                     .show();
                 $('#wait_label').hide();
-            })
+            });
+
+            socket.on('disconnect', () => {
+                $('#error').text("Server disconnected!");
+                console.log("Server disconnected");
+            });
 
         } else {
-            $('#error').text("Unable to find room");
+            $('#error').text("Unable to find room").show();
         }
     });
+
 }
 
 function startGame() {
