@@ -20,7 +20,7 @@ http.createServer((req, res) => {
     res.end();
 })
 
-https.createServer({
+var server = https.createServer({
     key: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/privkey.pem"),
     cert: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/fullchain.pem"),
     ca: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/chain.pem")
