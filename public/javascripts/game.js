@@ -22,7 +22,7 @@ function makeGame() {
         });
 
         socket.on('player_number_update', (res) => {
-            $('#num_participants').text(res.num.toString());
+            $('#num_participants').text("Number of participants: " + res.num.toString());
             if(res.start_possible) {
                 $('#num_participants_error').hide();
             } else {
