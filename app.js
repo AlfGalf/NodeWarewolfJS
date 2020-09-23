@@ -4,10 +4,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var uuid = require('uuid').v4;
+
+const roomsBeingSetup = [];
+const sockets = [];
 
 var app = express();
-var http = require('http').createServer(app);
-var io = require('socket.io')(80);
+
+var server = app.listen(3000, () => {
+    console.log('listening');
+});
+
+var io = require('socket.io')(server);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -15,8 +23,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-http.listen(3001, () => {
-    console.log('listening on *:3001');
+io.on('connection', (socket) => {
+    console.log('a user connected');
+
+    socket.on('disconnect', (socket) => {
+        console.log('a player disconnected');
+    })
+
+    socket.on('host_sign_up', (res) => {
+        let code = res.room_code;
+        for (let i = 0; i < roomsBeingSetup.length; i++) {
+            let room = roomsBeingSetup[i];
+            if(room.code === code) {
+                game.addGame(code, socket);
+                console.log("Made Game");
+                return;
+            }
+        }
+        console.log("Didnt find room for host setup,")
+    })
+
+    socket.on('player_sign_up', (res) => {
+        game.addPlayerToGame(res.room_code, res.uuid, socket);
+    })
 });
 
 app.get('/', function(req, res) {
@@ -24,16 +53,27 @@ app.get('/', function(req, res) {
 });
 
 app.post('/makeGame', (req, res) => {
-    var code = game.makeNewGame()
-    console.log(code);
+    var code = Math.floor(Math.random() * 10000);
+    roomsBeingSetup.push( {
+        code: code
+    })
+
     res.send(code.toString());
 })
 
 app.post('/joinGame', (req, res) => {
-    console.log("Received code: " + req.body.code);
-    var uuid = game.addToGame(parseInt(req.body.code));
-    console.log("UUID: " + uuid);
-    res.send(uuid);
+
+    if(game.doesGameExist(req.body.code)) {
+        res.send( {
+            success: true,
+            uuid: uuid(),
+            room_code: req.body.code
+        })
+    } else {
+        res.send( {
+            success: false
+        })
+    }
 })
 
 module.exports = app;
