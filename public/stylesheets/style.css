@@ -107,6 +107,11 @@ button:enabled.draw-border:hover::after {
   width: 25%;
   margin: 10px;
 }
+
+:disabled.btn {
+  color: gray;
+}
+
 .btn:focus {
   outline: 2px dotted #2C3E50;
 }
