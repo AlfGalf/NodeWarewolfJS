@@ -31,12 +31,12 @@ roles.push([5, 10, 2, 2, 0, 1, 1]); // 21 players
 roles.push([5, 10, 2, 2, 1, 1, 1]); // 22 players
 roles.push([5, 11, 2, 2, 1, 1, 1]); // 23 players
 roles.push([6, 11, 2, 2, 1, 1, 1]); // 24 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 25 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 26 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 27 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 28 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 29 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 30 players
+roles.push([6, 12, 2, 2, 1, 1, 1]); // 25 players
+roles.push([7, 12, 2, 2, 1, 1, 1]); // 26 players
+roles.push([7, 13, 2, 2, 1, 1, 1]); // 27 players
+roles.push([8, 13, 2, 2, 1, 1, 1]); // 28 players
+roles.push([8, 14, 2, 2, 1, 1, 1]); // 29 players
+roles.push([9, 14, 2, 2, 1, 1, 1]); // 30 players
 
 
 function assign(players) {
@@ -72,7 +72,7 @@ function shuffleArray(array) {
 }
 
 const minplayers = 6;
-const maxplayers = 24;
+const maxplayers = 30;
 module.exports.assign = assign;
 module.exports.maxplayers = maxplayers;
 module.exports.minplayers = minplayers;
