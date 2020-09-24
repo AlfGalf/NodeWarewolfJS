@@ -5,6 +5,7 @@ var room_code;
 var num_players = 0;
 
 var roles = [];
+
 roles.push([1, 4, 0, 1, 0, 0, 0]); // 6 players
 roles.push([1, 5, 0, 1, 0, 0, 0]); // 7 players
 roles.push([2, 4, 1, 1, 0, 0, 0]); // 8 players
@@ -24,12 +25,13 @@ roles.push([5, 10, 2, 2, 0, 1, 1]); // 21 players
 roles.push([5, 10, 2, 2, 1, 1, 1]); // 22 players
 roles.push([5, 11, 2, 2, 1, 1, 1]); // 23 players
 roles.push([6, 11, 2, 2, 1, 1, 1]); // 24 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 25 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 26 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 27 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 28 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 29 players
-roles.push([0, 0, 0, 0, 0, 0, 0]); // 30 players
+roles.push([6, 12, 2, 2, 1, 1, 1]); // 25 players
+roles.push([7, 12, 2, 2, 1, 1, 1]); // 26 players
+roles.push([7, 13, 2, 2, 1, 1, 1]); // 27 players
+roles.push([8, 13, 2, 2, 1, 1, 1]); // 28 players
+roles.push([8, 14, 2, 2, 1, 1, 1]); // 29 players
+roles.push([9, 14, 2, 2, 1, 1, 1]); // 30 players
+
 
 const min_players = 6;
 const max_players = 30;
