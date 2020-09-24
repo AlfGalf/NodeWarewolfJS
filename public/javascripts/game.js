@@ -32,7 +32,7 @@ roles.push([0, 0, 0, 0, 0, 0, 0]); // 29 players
 roles.push([0, 0, 0, 0, 0, 0, 0]); // 30 players
 
 const min_players = 6;
-const max_players = 24;
+const max_players = 30;
 
 $(document).ready(() => {
     $('#connect_div').show();
