@@ -15,9 +15,9 @@ const sockets = [];
 
 var app = express();
 
-var server = http.createServer((req, res) => {}).listen(400, () => { 
-    console.log('HTTP listening on 400');
-})
+var server = http.createServer(app).listen(8100, () => { 
+    console.log('HTTP listening on 8100');
+});
 
 var io = require('socket.io')(server);
 
@@ -49,6 +49,7 @@ io.on('connection', (socket) => {
 });
 
 app.get('/', function(req, res) {
+    console.log("Returned index");
     res.render('index', {});
 });
 
