@@ -15,7 +15,7 @@ const sockets = [];
 
 var app = express();
 
-var server http.createServer((req, res) => {}).listen(400, () => { 
+var server = http.createServer((req, res) => {}).listen(400, () => { 
     console.log('HTTP listening on 400');
 })
 
