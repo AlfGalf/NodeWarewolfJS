@@ -15,20 +15,9 @@ const sockets = [];
 
 var app = express();
 
-http.createServer((req, res) => {
-    res.writeHead(301, {"Location": "https://" + req.headers['host'] + req.url});
-    res.end();
-}).listen(80, () => {
-    console.log("Http redirect listening");
+var server http.createServer((req, res) => {}).listen(400, () => { 
+    console.log('HTTP listening on 400');
 })
-
-var server = https.createServer({
-    key: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/privkey.pem"),
-    cert: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/fullchain.pem"),
-    ca: fs.readFileSync("/etc/letsencrypt/live/alfierichards.com/chain.pem")
-}, app).listen(443, () => {
-    console.log('HTTPS listening');
-});
 
 var io = require('socket.io')(server);
 
